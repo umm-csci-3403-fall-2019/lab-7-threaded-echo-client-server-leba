@@ -1,6 +1,6 @@
 # Threaded Echo Client-Server
 
-[![Actions Status](https://github.com/umm-csci-3403-fall-2019/Threaded-echo-client-server-leba/workflows/Java%20CI/badge.svg)](https://github.com/umm-csci-3403-fall-2019/lab-7-threaded-echo-client-server-leba/actions)
+[![Actions Status](https://github.com/umm-csci-3403-fall-2019/lab-7-threaded-echo-client-server-leba/workflows/Java%20CI/badge.svg)](https://github.com/umm-csci-3403-fall-2019/lab-7-threaded-echo-client-server-leba/actions)
 
 - [Threaded Echo Client-Server](#threaded-echo-client-server)
   - [Fix your status badge](#fix-your-status-badge)
