@@ -2,6 +2,7 @@
 
 [![Actions Status](https://github.com/UMM-CSci-Systems/Threaded-echo-client-server/workflows/Java%20CI/badge.svg)]
 (https://github.com/UMM-CSci-Systems/Threaded-echo-client-server/actions)
+
 - [Threaded Echo Client-Server](#threaded-echo-client-server)
   - [Fix your status badge](#fix-your-status-badge)
   - [Testing this lab](#testing-this-lab)
