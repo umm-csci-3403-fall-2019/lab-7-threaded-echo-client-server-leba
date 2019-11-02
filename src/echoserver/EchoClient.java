@@ -20,27 +20,38 @@ public class EchoClient {
 
 		// Put your code here.
 
-		Thread inputThread = new Thread(new KeyboardReader(socketInputStream, socket));
-		// read bytes from the standard input
-		Thread outputThread = new Thread(new KeyboardReader(socketOutputStream, socket));
-		//reads bytes from the server socket
-		outputThread.start();
+		Thread inputThread = new Thread(){
+			public void run(){
+				try{
+					int readByte;
+					while ((readByte = System.in.read()) != -1) {
+						// reading each byte
+						socketOutputStream.write(readByte);
+					}
+					socketOutputStream.flush();
+					socket.shutdownOutput();
+					// Shuting down the output once we are done reading
+				}catch(IOException e){
+					e.printStackTrace();
+				}
+			}
+		};
+
 		inputThread.start();
-
-		try {
-			inputThread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			outputThread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-
-		System.out.flush();
-		// write any data stored in the out buffer
-
+		Thread outputThread = new Thread(){
+			public void run(){
+				int sockByte;
+				try {
+					while ((sockByte = socketInputStream.read()) != -1) {
+						System.out.write(sockByte);
+					}
+					System.out.flush();
+					socket.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		outputThread.start();
 	}
 }
