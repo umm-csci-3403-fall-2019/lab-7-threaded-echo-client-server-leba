@@ -22,6 +22,36 @@ public class EchoServer {
 			OutputStream outputStream = socket.getOutputStream();
 
 			// Put your code here.
+			Thread t = new Thread(new ServerThreader(inputStream, outputStream, socket));
+			t.start();
 		}
 	}
+
+}
+
+class ServerThreader implements Runnable {
+	private InputStream input;
+	private OutputStream output;
+	private Socket socket;
+
+
+	public ServerThreader(InputStream input, OutputStream output, Socket socket) {
+		this.input = input;
+		this.output = output;
+		this.socket = socket;
+
+	}
+	public void run() {
+		try {
+			int i;
+			while ((i = input.read()) != -1) {
+				output.write(i);
+			}
+			socket.shutdownOutput();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 }
